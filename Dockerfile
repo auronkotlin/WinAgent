@@ -2,12 +2,12 @@ FROM node:24-alpine
 
 WORKDIR /app
 
-RUN apk add --no-cache git
+RUN apk add --no-cache git build-base python3 make g++ cmake
 
 RUN git clone https://github.com/openclaw/openclaw.git .
 
 RUN npm install -g pnpm
-RUN pnpm install
+RUN pnpm install --no-optional || true
 
 RUN pnpm build
 
