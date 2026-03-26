@@ -11,6 +11,9 @@ RUN pnpm install 2>&1 | grep -v "node-llama-cpp" || true
 
 RUN pnpm build 2>&1 | grep -v "node-llama-cpp" || true
 
+COPY start.sh /app/start.sh
+RUN chmod +x /app/start.sh
+
 EXPOSE 18789
 
-CMD ["pnpm", "openclaw", "gateway", "--port", "18789", "--verbose"]
+CMD ["/app/start.sh"]
