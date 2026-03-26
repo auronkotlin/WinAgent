@@ -4,11 +4,12 @@ services:
     runtime: docker
     plan: free
     envVars:
-      - key: ANTHROPIC_API_KEY
+      - key: GEMINI_API_KEY
         scope: build
-      - key: OPENAI_API_KEY
+      - key: DEEPSEEK_API_KEY
         scope: build
       - key: TELEGRAM_BOT_TOKEN
         scope: build
       - key: NODE_ENV
         value: production
+    healthCheckPath: /health
