@@ -2,13 +2,15 @@
 
 mkdir -p /app/.openclaw
 
+PORT=${PORT:-18789}
+
 cat > /app/.openclaw/openclaw.json <<EOF
 {
   "agent": {
     "model": "gemini-3.1-flash-lite-preview"
   },
   "gateway": {
-    "port": 18789,
+    "port": $PORT,
     "bind": "0.0.0.0"
   },
   "channels": {
@@ -19,4 +21,4 @@ cat > /app/.openclaw/openclaw.json <<EOF
 }
 EOF
 
-pnpm openclaw gateway --port 18789 --allow-unconfigured --verbose
+exec pnpm openclaw gateway --port $PORT --allow-unconfigured --verbose

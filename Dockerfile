@@ -14,6 +14,7 @@ RUN pnpm build 2>&1 | grep -v "node-llama-cpp" || true
 COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh
 
+ENV PORT=18789
 EXPOSE 18789
 
 CMD ["/app/start.sh"]
