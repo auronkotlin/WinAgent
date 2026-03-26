@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  openclaw:
+    build: .
+    ports:
+      - "18789:18789"
+    environment:
+      - NODE_ENV=production
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+    volumes:
+      - ./workspace:/app/.openclaw/workspace
+      - ./data:/app/.openclaw
+    restart: unless-stopped

@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: openclaw
+    runtime: docker
+    plan: free
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        scope: build
+      - key: OPENAI_API_KEY
+        scope: build
+      - key: TELEGRAM_BOT_TOKEN
+        scope: build
+      - key: NODE_ENV
+        value: production
