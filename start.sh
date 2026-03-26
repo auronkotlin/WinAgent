@@ -22,8 +22,8 @@ cat > /app/.openclaw/openclaw.json <<EOF
 EOF
 
 # Health check server (responde rápido a Render)
-cat > /app/health.js <<'HEALTHEOF'
-const http = require('http');
+cat > /app/health.mjs <<'HEALTHEOF'
+import http from 'http';
 const server = http.createServer((req, res) => {
   if (req.url === '/health') {
     res.writeHead(200);
@@ -37,7 +37,7 @@ server.listen(process.env.PORT || 10000);
 HEALTHEOF
 
 # Inicia health check
-node /app/health.js &
+node /app/health.mjs &
 
 # Inicia OpenClaw
 exec pnpm openclaw gateway --port $PORT --allow-unconfigured --verbose
